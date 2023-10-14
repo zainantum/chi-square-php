@@ -51,7 +51,7 @@
                     return (strpos($var, $token) !== false);
                 });
                 $x += count($count);
-                $y += (count($this->dataLearning[$keyLevel])) - $x;
+                $y += (count($this->dataLearning[$keyLevel])) - count($count);
             }
             return ["x" => $x, "y" => $y];
         }
@@ -67,7 +67,7 @@
                     $BD = $this->countABCD($token, $stresslvl);
                     $chi += ($this->totalData * pow(($AC["x"]*$BD["y"] - $AC["y"]*$BD["x"]), 2))/(array_sum($AC)*array_sum($BD)*($AC["x"]+$BD["x"])*($AC["y"]+$BD["y"]));
                 }
-                echo "$token = $chi \n";
+                $this->chi[$token] = $chi;
             }
         }
         
